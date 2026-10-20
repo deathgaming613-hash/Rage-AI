@@ -1,13 +1,14 @@
 # RAGE AI
 
-A red-and-black, voice-first gaming assistant focused on Roblox and Blox Fruits.
+A red-and-black, voice-first gaming assistant for Roblox, Blox Fruits, and many other PC, console, and mobile games.
 
 ## Features
 
 - Responsive chat interface with a central voice-mode button
 - Browser speech recognition for voice input (browser and microphone permission required)
 - Spoken replies with browser text-to-speech
-- Roblox and Blox Fruits-focused AI instructions
+- Multi-game guidance for walkthroughs, builds, strategies, loadouts, quests, combos, settings, and troubleshooting
+- Google Search grounding for checking current game updates, codes, events, and other changing facts when supported by the Gemini API
 - Server-side Gemini API integration; the API key is never sent to the browser
 - Health endpoint at `/api/health`
 
