@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#09090d">
+  <meta name="description" content="RAGE AI — your voice-first Roblox and Blox Fruits gaming assistant.">
+  <link rel="manifest" href="/manifest.json">
+  <title>RAGE AI — Gaming Intelligence</title>
+  <style>
+    :root{color-scheme:dark;--bg:#09090d;--panel:#121218;--red:#ff2638;--muted:#a6a6b4;--line:#292933}
+    *{box-sizing:border-box}body{margin:0;min-height:100vh;background:radial-gradient(ellipse at 50% 0%,#351017 0%,#111016 38%,var(--bg) 75%);color:#f7f7fb;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+    .shell{max-width:920px;margin:auto;padding:24px 16px 40px}.top{display:flex;align-items:center;justify-content:space-between;gap:12px}
+    .brand{display:flex;align-items:center;gap:11px;font-weight:900;letter-spacing:3px}.logo{display:grid;place-items:center;width:42px;height:42px;border:1px solid #ff4554;border-radius:13px;background:#241016;color:var(--red);font-size:22px;box-shadow:0 0 24px #ff263826}
+    .pill{border:1px solid var(--line);border-radius:999px;padding:7px 11px;color:var(--muted);font-size:12px}.pill i{display:inline-block;width:7px;height:7px;background:#ff3b4d;border-radius:50%;margin-right:7px}
+    .hero{text-align:center;padding:38px 0 22px}.eyebrow{font-size:11px;font-weight:800;letter-spacing:4px;color:var(--red)}h1{font-size:clamp(34px,8vw,62px);line-height:1.02;margin:10px 0 12px;letter-spacing:-2px}.hero p{max-width:550px;margin:0 auto;color:var(--muted);line-height:1.6}
+    .reactor-wrap{display:grid;place-items:center;padding:20px 0 22px}.reactor{position:relative;width:164px;height:164px;border-radius:50%;border:1px solid #ff334b;background:radial-gradient(circle,#4a101c 0%,#210c13 48%,#100c12 72%);color:white;cursor:pointer;box-shadow:0 0 0 10px #ff26380a,0 0 0 22px #ff263805,0 0 42px #ff26383b;transition:transform .2s,box-shadow .2s}
+    .reactor:before,.reactor:after{content:"";position:absolute;inset:11px;border:1px solid #ff26385e;border-radius:50%}.reactor:after{inset:23px;border-style:dashed;animation:spin 18s linear infinite}.reactor span{font-size:42px;color:var(--red);display:block}.reactor small{display:block;font-size:10px;font-weight:800;letter-spacing:2px;margin-top:7px}.reactor:hover{transform:scale(1.03);box-shadow:0 0 0 10px #ff26380e,0 0 0 22px #ff263808,0 0 60px #ff263866}.reactor.listening{animation:pulse 1s infinite}
+    @keyframes spin{to{transform:rotate(360deg)}}@keyframes pulse{50%{box-shadow:0 0 0 18px #ff263811,0 0 55px #ff2638aa}}
+    .hint{text-align:center;font-size:12px;color:var(--muted);margin-top:-8px}.grid{display:grid;grid-template-columns:1fr;gap:14px;margin-top:18px}.panel{background:#111117d9;border:1px solid var(--line);border-radius:18px;padding:16px;box-shadow:0 16px 45px #0002}.panel-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:13px}.panel h2{font-size:13px;letter-spacing:1px;margin:0}.tag{font-size:10px;color:var(--red);letter-spacing:1px;font-weight:800}
+    .chat{height:280px;overflow:auto;display:flex;flex-direction:column;gap:12px;padding:4px 2px 12px;scroll-behavior:smooth}.bubble{max-width:92%;padding:12px 14px;border-radius:14px;line-height:1.55;font-size:14px;white-space:pre-wrap;overflow-wrap:anywhere}.bot{align-self:flex-start;background:#1a1a23;border:1px solid #30303b}.user{align-self:flex-end;background:#42121b;border:1px solid #76202d}.who{display:block;color:#ff5967;font-size:10px;font-weight:900;letter-spacing:1.3px;margin-bottom:5px}
+    .compose{display:flex;gap:8px;margin-top:12px}.compose input{min-width:0;flex:1;background:#09090e;border:1px solid #33333e;border-radius:12px;padding:13px;color:#fff;font:inherit;outline:none}.compose input:focus{border-color:var(--red)}button:focus-visible,input:focus-visible{outline:2px solid #ff6571;outline-offset:3px}.send,.mini{border:1px solid #6c1d29;background:#3a1119;color:#fff;border-radius:12px;padding:0 16px;font-weight:800;cursor:pointer}.send:hover,.mini:hover{background:#571521}.quick{display:flex;flex-wrap:wrap;gap:8px;margin-top:13px}.quick button{border:1px solid #30303b;border-radius:999px;background:#17171f;color:#ddd;padding:8px 11px;font-size:12px;cursor:pointer}.quick button:hover{border-color:#e63849;color:#fff}
+    .tools{display:flex;gap:8px;flex-wrap:wrap}.mini{padding:9px 11px;font-size:12px}.mini[aria-pressed=true]{border-color:var(--red);color:#ff7c86}.status{font-size:12px;color:var(--muted);margin-top:12px;min-height:18px}.foot{text-align:center;color:#686875;font-size:11px;line-height:1.6;margin-top:24px}.foot a{color:#ff7882}
+    @media(min-width:720px){.grid{grid-template-columns:minmax(0,1.55fr) minmax(230px,.8fr)}.hero{padding-top:48px}.chat{height:340px}}
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <header class="top"><div class="brand"><div class="logo">R</div><span>RAGE AI</span></div><div class="pill"><i></i> GAMING INTELLIGENCE</div></header>
+    <section class="hero"><div class="eyebrow">YOUR GAME. YOUR RULES.</div><h1>UNLEASH THE RAGE.</h1><p>Your gaming co-pilot for Roblox, Blox Fruits, builds, combos, quests and strategy.</p></section>
+    <section class="reactor-wrap"><button id="voiceButton" class="reactor" aria-label="Tap to start voice mode"><span>◉</span><small id="voiceLabel">TAP TO SPEAK</small></button></section>
+    <div class="hint">Tap the core to speak · RAGE AI will answer out loud when voice output is enabled</div>
+    <div class="grid">
+      <section class="panel">
+        <div class="panel-head"><h2>RAGE COMMAND CENTER</h2><span class="tag">LIVE CHAT</span></div>
+        <div id="chat" class="chat" aria-live="polite"><div class="bubble bot"><span class="who">RAGE AI</span>I'm online. Ask me about Blox Fruits combos, fruits, grinding, trading or any Roblox game. Let's get to it.</div></div>
+        <form id="chatForm" class="compose"><input id="message" maxlength="6000" autocomplete="off" placeholder="Ask RAGE anything..." aria-label="Your message"><button class="send" type="submit">SEND ↗</button></form>
+        <div class="quick"><button type="button" data-prompt="Give me a strong Blox Fruits PvP combo and explain the timing.">⚔ PvP combo</button><button type="button" data-prompt="What is a fast and safe way to grind in Blox Fruits at my level? Ask my level if needed.">🔥 Grinding</button><button type="button" data-prompt="Explain the latest Blox Fruits update only if you know reliable details. Tell me if you are unsure.">🎮 Updates</button><button type="button" data-prompt="Give me 5 Roblox YouTube video ideas that are easy to record.">📹 Video ideas</button></div>
+        <div id="status" class="status" role="status">Ready. AI answers require a server API key.</div>
+      </section>
+      <aside class="panel">
+        <div class="panel-head"><h2>VOICE SYSTEM</h2><span class="tag">AUDIO</span></div>
+        <p style="font-size:13px;line-height:1.6;color:#aaaab8;margin-top:0">Use the center core to speak, or type in the command center. Browser voice recognition depends on your browser and microphone permission.</p>
+        <div class="tools"><button id="speechToggle" class="mini" aria-pressed="true">🔊 Voice replies: ON</button><button id="stopSpeech" class="mini">■ Stop voice</button></div>
+        <div style="height:1px;background:#292933;margin:18px 0"></div>
+        <div class="panel-head"><h2>SYSTEM CHECK</h2><span class="tag">STATUS</span></div>
+        <div id="systemStatus" style="font-size:13px;line-height:1.8;color:#b8b8c5">Checking server…</div>
+        <div class="foot">RAGE AI is an independent fan-made assistant, not affiliated with Roblox or the Blox Fruits developers.</div>
+      </aside>
+    </div>
+    <footer class="foot">Keep your API key private. Configure it in your hosting provider's Environment settings, never in this page's code.</footer>
+  </main>
+<script>
+(() => {
+  const $ = (id) => document.getElementById(id);
+  const chat = $("chat"), input = $("message"), status = $("status");
+  let voiceReplies = true, recognition = null, listening = false, busy = false;
+
+  function addBubble(text, who) {
+    const bubble = document.createElement("div");
+    bubble.className = "bubble " + (who === "YOU" ? "user" : "bot");
+    const label = document.createElement("span");
+    label.className = "who";
+    label.textContent = who;
+    const body = document.createElement("div");
+    body.textContent = text;
+    bubble.append(label, body);
+    chat.appendChild(bubble);
+    chat.scrollTop = chat.scrollHeight;
+    return bubble;
+  }
+
+  function speak(text) {
+    if (!voiceReplies || !("speechSynthesis" in window)) return;
+    window.speechSynthesis.cancel();
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.rate = 1.02;
+    utterance.pitch = 0.88;
+    const voices = window.speechSynthesis.getVoices();
+    const english = voices.find(v => /en-IN|en-US|en-GB/i.test(v.lang));
+    if (english) utterance.voice = english;
+    window.speechSynthesis.speak(utterance);
+  }
+
+  async function sendMessage(raw) {
+    const message = String(raw || "").trim();
+    if (!message || busy) return;
+    busy = true;
+    input.value = "";
+    addBubble(message, "YOU");
+    const pending = addBubble("Thinking…", "RAGE AI");
+    status.textContent = "RAGE is processing your request…";
+    const send = document.querySelector(".send");
+    send.disabled = true;
+    try {
+      const response = await fetch("/api/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message })
+      });
+      const data = await response.json().catch(() => ({}));
+      if (!response.ok) throw new Error(data.error || "The server could not answer.");
+      pending.lastChild.textContent = data.answer;
+      status.textContent = "Response received.";
+      speak(data.answer);
+    } catch (error) {
+      pending.lastChild.textContent = error.message || "Connection error. Try again.";
+      status.textContent = "Check the server and AI provider settings.";
+    } finally {
+      busy = false;
+      send.disabled = false;
+      chat.scrollTop = chat.scrollHeight;
+    }
+  }
+
+  $("chatForm").addEventListener("submit", event => {
+    event.preventDefault();
+    sendMessage(input.value);
+  });
+  document.querySelectorAll("[data-prompt]").forEach(button => {
+    button.addEventListener("click", () => sendMessage(button.dataset.prompt));
+  });
+
+  const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+  const voiceButton = $("voiceButton");
+  function stopListening() {
+    if (recognition) recognition.stop();
+    listening = false;
+    voiceButton.classList.remove("listening");
+    $("voiceLabel").textContent = "TAP TO SPEAK";
+  }
+  voiceButton.addEventListener("click", () => {
+    if (listening) { stopListening(); return; }
+    if (!SpeechRecognition) {
+      status.textContent = "Voice input is not supported by this browser. Try Chrome, allow microphone access, or type your question.";
+      return;
+    }
+    recognition = new SpeechRecognition();
+    recognition.lang = navigator.language || "en-IN";
+    recognition.interimResults = false;
+    recognition.maxAlternatives = 1;
+    recognition.onstart = () => {
+      listening = true;
+      voiceButton.classList.add("listening");
+      $("voiceLabel").textContent = "LISTENING…";
+      status.textContent = "Listening. Speak now.";
+    };
+    recognition.onresult = event => {
+      const spoken = event.results?.[0]?.[0]?.transcript || "";
+      input.value = spoken;
+      stopListening();
+      if (spoken.trim()) sendMessage(spoken);
+    };
+    recognition.onerror = event => {
+      status.textContent = event.error === "not-allowed" ? "Microphone permission was denied. Allow microphone access in your browser." : "Voice input stopped. You can type instead.";
+      stopListening();
+    };
+    recognition.onend = () => {
+      listening = false;
+      voiceButton.classList.remove("listening");
+      $("voiceLabel").textContent = "TAP TO SPEAK";
+    };
+    try { recognition.start(); }
+    catch (_) { status.textContent = "Voice input could not start. Please tap again or type your message."; }
+  });
+
+  $("speechToggle").addEventListener("click", () => {
+    voiceReplies = !voiceReplies;
+    $("speechToggle").setAttribute("aria-pressed", String(voiceReplies));
+    $("speechToggle").textContent = voiceReplies ? "🔊 Voice replies: ON" : "🔇 Voice replies: OFF";
+    if (!voiceReplies && "speechSynthesis" in window) window.speechSynthesis.cancel();
+  });
+  $("stopSpeech").addEventListener("click", () => {
+    if ("speechSynthesis" in window) window.speechSynthesis.cancel();
+    stopListening();
+    status.textContent = "Voice stopped.";
+  });
+
+  fetch("/api/health").then(r => r.json()).then(data => {
+    $("systemStatus").textContent = data.configured
+      ? "● Server online\n● AI key detected\n● Chat endpoint ready"
+      : "● Server online\n○ AI key not configured yet\n● Voice controls available";
+  }).catch(() => {
+    $("systemStatus").textContent = "○ Could not reach the server health check.";
+  });
+
+  if ("serviceWorker" in navigator && location.protocol.startsWith("http")) {
+    window.addEventListener("load", () => navigator.serviceWorker.register("/sw.js").catch(() => {}));
+  }
+})();
+</script>
+</body>
+</html>
